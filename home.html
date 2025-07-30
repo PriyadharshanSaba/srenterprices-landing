@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="SR Enterprises offers precision manufacturing services with cutting-edge machinery and unmatched quality assurance.">
+  <meta name="keywords" content="precision manufacturing, CNC machining, tooling, automation, SR Enterprises">
+  <title>SR Enterprises</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("nav-collapse-2");
+    const burger = document.getElementById("hamburger");
+
+    menu.classList.toggle("show");
+    burger.classList.toggle("open");
+
+    const menu_2 = document.getElementById("nav-overlay");
+    menu_2.classList.toggle("show");
+  }
+</script>
+
+<body>
+  <div class="content-container">
+
+    <!-- Primary Nav Links -->
+    <nav class="primary-nav">
+      <div class="nav-header">
+        <div class="logo">
+          <img src="assets/sr_logo.png" alt="Haas Logo" class="logo-img">
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        </div>
+        <div class="nav-collapse" id="nav-collapse">
+          <ul class="nav-links">
+            <li><a href="machines.html">MACHINES</a></li>
+            <li><a href="options.html">OPTIONS</a></li>
+            <li><a href="why-haas.html">WHY US</a></li>
+            <li><a href="service.html">SERVICE</a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+
+  <div class="nav-overlay" id="nav-overlay">
+    <div class="nav-collapse-2" id="nav-collapse-2">
+      <ul class="nav-links">
+        <li><a href="machines.html">MACHINES</a></li>
+        <li><a href="options.html">OPTIONS</a></li>
+        <li><a href="why-haas.html">WHY US</a></li>
+        <li><a href="service.html">SERVICE</a></li>
+      </ul>
+    </div>
+  </div>
+
+  </nav>
+
+  <div class="site-wrapper">
+    <main class="main-content">
+      <!-- Grid Section Below Nav -->
+      <section class="products-image-grid">
+        <div class="products-grid-container">
+          <div class="products-grid-box">
+            <img src="assets/instrument-1.jpg" alt="Image 1" class="products-grid-image" />
+          </div>
+          <div class="products-grid-box">
+            <img src="assets/instrument-2.jpg" alt="Image 2" class="products-grid-image" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="assets/sr_logo.png" alt="SR Enterprises Logo" />
+        </div>
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="#">Machines</a></li>
+              <li><a href="#">Tooling</a></li>
+              <li><a href="#">Automation</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Service</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">News</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SR Enterprises. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+
+</body>
+
+</html>
