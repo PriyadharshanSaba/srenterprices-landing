@@ -9,6 +9,19 @@
   <meta name="keywords" content="precision manufacturing, CNC machining, tooling, automation, SR Enterprises">
   <title>SR Enterprises Products</title>
   <link rel="stylesheet" href="css/style.css" />
+
+<style>
+  /* Disable hover ONLY for PRODUCTS dropdown */
+  .products-page .products-click-only:hover .mega-dropdown {
+    display: none;
+  }
+
+  /* Enable click-to-show for PRODUCTS */
+  .products-page .products-click-only.show-dropdown .mega-dropdown {
+    display: block;
+  }
+</style>
+
 </head>
 
 
@@ -25,23 +38,24 @@
   }
 </script>
 
-<body>
+<body class="products-page">
   <div class="content-container">
 
     <!-- Primary Nav Links -->
     <nav class="primary-nav">
       <div class="nav-header">
         <div class="logo">
-          <a href="home.html"><img src="assets/sr_logo.png" alt="SR Enterprises Logo" class="logo-img"></a>
+          <a href="index.html"><img src="assets/sr_logo.png" alt="SR Enterprises Logo" class="logo-img"></a>
         </div>
 
         <div class="hamburger" id="hamburger" onclick="toggleMenu()"></div>
 
         <div class="nav-collapse" id="nav-collapse">
           <ul class="nav-links">
-            <!-- MACHINES (Mega Dropdown) -->
-            <li class="nav-item has-dropdown">
-              <a href="machines.html">PRODUCTS</a>
+            <!-- PRODUCTS (Mega Dropdown) -->
+            <li class="nav-item has-dropdown products-click-only">
+              <a href="products.html" class="products-toggle-btn"
+                onclick="event.preventDefault(); toggleDropdown(event)">PRODUCTS</a>
               <div class="mega-dropdown">
                 <div class="container">
                   <div class="dropdown-column">
@@ -146,7 +160,152 @@
 
   <div class="site-wrapper">
     <main class="main-content">
+      <div class="product-page-layout">
+        <!-- Left Sidebar Navigation -->
+        <aside class="product-sidebar">
+          <div class="sidebar-section">
+            <h2 class="sidebar-title">Products</h2>
+            <ul class="sidebar-menu">
+              <li class="sidebar-item">
+                <button class="accordion">Optomech</button>
+                <ul class="submenu">
+                  <li><a href="#vf-series">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-item">
+                <button class="accordion">Lathes</button>
+                <ul class="submenu">
+                  <li><a href="#">ST Series</a></li>
+                  <li><a href="#">Toolroom Lathes</a></li>
+                  <li><a href="#">Dual-Spindle</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                  <li><a href="#">VF Series</a></li>
+                  <li><a href="#">Mini Mills</a></li>
+                  <li><a href="#">Toolroom Mills</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-item">
+                <button class="accordion">Automation</button>
+                <ul class="submenu">
+                  <li><a href="#">Mill Automation</a></li>
+                  <li><a href="#">Lathe Automation</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </aside>
 
+        <!-- Right Side Product Display (you can customize this) -->
+        <section class="product-display">
+          <h1>Optomech</h1>
+
+          <!-- VF Series -->
+          <div id="vf-seriess" class="product-row">
+            <div class="product-info">
+              <h3>VF Series</h3>
+              <p>Versatile vertical mills ideal for a range of applications requiring precision and rigidity.</p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="VF Series" class="product-thumb" />
+          </div>
+
+          <!-- Mini Mills -->
+          <div id="mini-mills" class="product-row">
+            <div class="product-info">
+              <h3>Mini Mills</h3>
+              <p>Compact machines for high-performance milling in limited spaces. Fast, reliable, and affordable.</p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Mini Mills" class="product-thumb" />
+          </div>
+
+          <!-- Toolroom Mills -->
+          <div id="toolroom-mills" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+
+          <h1>Lathes</h1>
+
+          <div id="toolroom-mills" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+
+
+          <div id="toolroom-mills" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+
+          <div id="toolroom-mills" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+
+          <div id="toolroom-mills" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+
+          <h1>Automation</h1>
+
+          <div id="toolroom-mills" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+
+          <div id="vf-series" class="product-row">
+            <div class="product-info">
+              <h3>Toolroom Mills</h3>
+              <p>Ideal for short-run work and prototyping, these mills offer convenience without sacrificing capability.
+              </p>
+            </div>
+            <img src="assets/instrument-5.jpeg" alt="Toolroom Mills" class="product-thumb" />
+          </div>
+        </section>
+      </div>
     </main>
 
 
@@ -197,6 +356,24 @@
 
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const btn = document.querySelector('.products-toggle-btn');
+      const navItem = btn.closest('.nav-item');
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        navItem.classList.toggle('show-dropdown');
+      });
+
+      // Optional: Close dropdown if you click elsewhere
+      document.addEventListener('click', function (e) {
+        if (!navItem.contains(e.target)) {
+          navItem.classList.remove('show-dropdown');
+        }
+      });
+    });
+  </script>
 
 </body>
 

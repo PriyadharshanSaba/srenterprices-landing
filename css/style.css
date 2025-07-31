@@ -7,15 +7,16 @@
 html,
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   height: 100%;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 .content-container {
   box-sizing: border-box;
-  flex: 1;
-  /* Fills the space between header and footer */
+  flex: 1; /* Fills the space between header and footer */
+  padding-top: 80px;
 }
 
 /* === HERO / LAYOUT === */
@@ -83,6 +84,12 @@ body {
   padding: 1em var(--padding-right-for-menu-items);
   border-bottom: 1px solid #ccc;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-header {
@@ -167,6 +174,8 @@ body {
   text-decoration: none;
   color: #222;
   font-weight: bold;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .nav-collapse-2 {
@@ -319,7 +328,8 @@ body {
 .mega-dropdown {
   display: none;
   position: fixed;
-  top: 60px; /* adjust based on height of your nav bar */
+  top: 65px;
+  /* adjust based on height of your nav bar */
   left: 0;
   width: 100vw;
   background: #fff;
@@ -374,8 +384,89 @@ body {
   padding: 0 2em;
 }
 
+
+.has-dropdown .mega-dropdown {
+  display: none;
+}
+
+.has-dropdown:hover .mega-dropdown {
+  display: block;
+}
+
 /* =============================== */
 
+
+/* HOME PAGE BANNER  */
+
+.hero-carousel {
+  width: 100%;
+  height: 500px; /* fixed height */
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Each slide takes up full space */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Make image fully cover the banner area */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Arrows stay vertically centered */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  padding: 0.6em 0.9em;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.carousel-nav.left {
+  left: 30px;
+}
+
+.carousel-nav.right {
+  right: 30px;
+}
+
+.carousel-nav:hover {
+  background-color: rgba(0,0,0,0.8);
+  opacity: 1;
+}
+/* =============================== */
 
 /* === MACHINES PAGE STYLES === */
 
@@ -462,10 +553,123 @@ body {
 /* ======================= */
 
 
+/* === PRODUCT PAGE LAYOUT === */
+.product-page-layout {
+  display: flex;
+  gap: 2em;
+  padding: 2em var(--padding-right-for-menu-items);
+  box-sizing: border-box;
+}
+
+/* Left Sidebar */
+.product-sidebar {
+  width: 280px;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  position: sticky;
+  top: 100px;
+  background-color: #f5f5f5;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  margin-bottom: 1em;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  margin-bottom: 1em;
+}
+
+.accordion {
+  background-color: #ddd;
+  color: #000;
+  cursor: pointer;
+  padding: 0.6em 1em;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.submenu {
+  list-style: none;
+  padding-left: 1em;
+  display: block;
+  margin-top: 0.5em;
+}
+
+.submenu li a {
+  display: block;
+  padding: 0.4em 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95em;
+}
+
+.submenu li a:hover {
+  text-decoration: underline;
+}
+
+/* Right Side Content */
+.product-display {
+  flex-grow: 1;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 1em;
+  border-bottom: 1px solid #eee;
+  scroll-margin-top: 80px;
+  /* space below sticky nav */
+}
+
+.product-info {
+  max-width: 65%;
+}
+
+.product-info h3 {
+  margin: 0 0 0.5em;
+}
+
+.product-info p {
+  color: #555;
+  font-size: 0.95em;
+}
+
+.product-thumb {
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+
+/* ######################### */
+
+
 /* === RESPONSIVE === */
 @media (max-width: 1068px) {
   :root {
-    --padding-right-for-menu-items: 4em;
+    --padding-right-for-menu-items: 1em;
   }
 
   .hamburger {
@@ -502,7 +706,7 @@ body {
     padding: var(--padding-right-for-menu-items-mobile);
   }
 
-   .products-image-grid-machines {
+  .products-image-grid-machines {
     padding: var(--padding-right-for-menu-items-mobile);
   }
 
@@ -532,6 +736,17 @@ body {
 
   .mega-dropdown {
     display: none !important;
+  }
+
+  .product-page-layout {
+    flex-direction: column;
+  }
+
+  .product-sidebar {
+    width: 100%;
+    position: relative;
+    top: auto;
+    max-height: none;
   }
 
 }

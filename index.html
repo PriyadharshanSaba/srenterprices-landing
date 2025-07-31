@@ -9,6 +9,7 @@
   <meta name="keywords" content="precision manufacturing, CNC machining, tooling, automation, SR Enterprises">
   <title>SR Enterprises</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 
@@ -32,14 +33,14 @@
     <nav class="primary-nav">
       <div class="nav-header">
         <div class="logo">
-          <a href="home.html"><img src="assets/sr_logo.png" alt="SR Enterprises Logo" class="logo-img"></a>
+          <a href="index.html"><img src="assets/sr_logo.png" alt="SR Enterprises Logo" class="logo-img"></a>
         </div>
 
         <div class="hamburger" id="hamburger" onclick="toggleMenu()"></div>
 
         <div class="nav-collapse" id="nav-collapse">
           <ul class="nav-links">
-            <!-- MACHINES (Mega Dropdown) -->
+            <!-- PRODUCTS (Mega Dropdown) -->
             <li class="nav-item has-dropdown">
               <a href="products.html">PRODUCTS</a>
               <div class="mega-dropdown">
@@ -147,14 +148,21 @@
   <div class="site-wrapper">
     <main class="main-content">
       <!-- Grid Section Below Nav -->
-      <section class="products-image-grid">
-        <div class="products-grid-container">
-          <div class="products-grid-box">
-            <img src="assets/instrument-1.jpg" alt="Image 1" class="products-grid-image" />
+      <section class="hero-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="assets/instrument-1.jpg" alt="Banner 1" />
           </div>
-          <div class="products-grid-box">
-            <img src="assets/instrument-2.jpg" alt="Image 2" class="products-grid-image" />
+          <div class="carousel-slide">
+            <img src="assets/instrument-2.jpg" alt="Banner 2" />
           </div>
+          <div class="carousel-slide">
+            <img src="assets/instrument-3.jpg" alt="Banner 3" />
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button class="carousel-nav left" onclick="prevSlide()">&#10094;</button>
+          <button class="carousel-nav right" onclick="nextSlide()">&#10095;</button>
         </div>
       </section>
     </main>
@@ -207,6 +215,35 @@
 
   </div>
 
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+      });
+      slides[index].classList.add('active');
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      let next = (currentSlide + 1) % totalSlides;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      let prev = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(prev);
+    }
+
+    // Auto-rotate with smooth fade
+    setInterval(nextSlide, 5000);
+
+    // Optional: Initialize first slide immediately
+    showSlide(currentSlide);
+  </script>
 
 </body>
 
