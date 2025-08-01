@@ -10,17 +10,17 @@
   <title>SR Enterprises Products</title>
   <link rel="stylesheet" href="css/style.css" />
 
-<style>
-  /* Disable hover ONLY for PRODUCTS dropdown */
-  .products-page .products-click-only:hover .mega-dropdown {
-    display: none;
-  }
+  <style>
+    /* Disable hover ONLY for PRODUCTS dropdown */
+    .products-page .products-click-only:hover .mega-dropdown {
+      display: none;
+    }
 
-  /* Enable click-to-show for PRODUCTS */
-  .products-page .products-click-only.show-dropdown .mega-dropdown {
-    display: block;
-  }
-</style>
+    /* Enable click-to-show for PRODUCTS */
+    .products-page .products-click-only.show-dropdown .mega-dropdown {
+      display: block;
+    }
+  </style>
 
 </head>
 
@@ -361,19 +361,39 @@
       const btn = document.querySelector('.products-toggle-btn');
       const navItem = btn.closest('.nav-item');
 
+      // Toggle dropdown on click
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         navItem.classList.toggle('show-dropdown');
       });
 
-      // Optional: Close dropdown if you click elsewhere
+      // Close on outside click (always)
       document.addEventListener('click', function (e) {
         if (!navItem.contains(e.target)) {
           navItem.classList.remove('show-dropdown');
         }
       });
+
+      // Auto-close on mouseleave (desktop only)
+      function handleMouseLeave() {
+        navItem.classList.remove('show-dropdown');
+      }
+
+      // Desktop only
+      function setupDesktopHoverBehavior() {
+        if (window.innerWidth >= 1069) {
+          navItem.addEventListener('mouseleave', handleMouseLeave);
+        } else {
+          navItem.removeEventListener('mouseleave', handleMouseLeave);
+        }
+      }
+
+      setupDesktopHoverBehavior();
+      window.addEventListener('resize', setupDesktopHoverBehavior); // handle resize
     });
   </script>
+
+
 
 </body>
 
