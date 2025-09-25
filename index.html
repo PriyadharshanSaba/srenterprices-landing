@@ -189,6 +189,7 @@
 
   <!-- Mobile Drawer Menu -->
   <div class="nav-overlay" id="nav-overlay">
+    <div class="nav-close" id="nav-close" aria-label="Close navigation menu">&times;</div>
     <div class="nav-collapse-2" id="nav-collapse-2">
       <ul class="nav-links">
 
@@ -527,6 +528,11 @@
         const subpanel = btn.nextElementSibling;
         subpanel.classList.toggle('show');
       });
+    });
+
+    // Close button inside mobile overlay
+    document.getElementById("nav-close").addEventListener("click", () => {
+      toggleMenu();
     });
   </script>
 

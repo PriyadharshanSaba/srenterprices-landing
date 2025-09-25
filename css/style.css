@@ -181,7 +181,6 @@ body.menu-open::after {
   color: #111;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.8em 0;
@@ -193,13 +192,6 @@ body.menu-open::after {
 .accordion-toggle:hover,
 .accordion-toggle.active {
   color: var(--primary);
-}
-
-.accordion-toggle::after,
-.accordion-subtoggle::after {
-  content: '›';
-  /* right arrow */
-  transition: transform 0.3s ease;
 }
 
 .accordion-toggle.active::after,
@@ -277,7 +269,6 @@ body.menu-open::after {
 .accordion-subtoggle::after {
   content: '›';
   margin-left: 8px;
-  /* adds spacing */
   transition: transform 0.3s ease;
 }
 
@@ -296,6 +287,21 @@ body.menu-open::after {
   height: 100%;
   object-fit: cover;
   border-radius: 6px;
+}
+
+.nav-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111;
+  cursor: pointer;
+  z-index: 2101; /* above overlay content */
+}
+
+.nav-close:hover {
+  color: var(--primary);
 }
 
 /* === MEGA MENU (Desktop) === */
