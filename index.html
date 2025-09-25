@@ -11,145 +11,344 @@
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
-
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("nav-collapse-2");
-    const burger = document.getElementById("hamburger");
-
-    menu.classList.toggle("show");
-    burger.classList.toggle("open");
-
-    const menu_2 = document.getElementById("nav-overlay");
-    menu_2.classList.toggle("show");
-  }
-</script>
 
 <body>
   <div class="content-container">
 
-    <!-- Primary Nav Links -->
+    <!-- Primary Nav -->
     <nav class="primary-nav">
       <div class="nav-header">
         <div class="logo">
           <a href="index.html"><img src="assets/sr_logo.png" alt="SR Enterprises Logo" class="logo-img"></a>
         </div>
 
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()"></div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu"></div>
 
         <div class="nav-collapse" id="nav-collapse">
           <ul class="nav-links">
             <!-- PRODUCTS (Mega Dropdown) -->
             <li class="nav-item has-dropdown">
-              <a href="products.html">PRODUCTS</a>
+              <a href="#">PRODUCTS</a>
               <div class="mega-dropdown">
-                <div class="container">
-                  <div class="dropdown-column">
-                    <h2>Optomech</h2>
-                    <ul>
-                      <li><a href="#">VF Series</a></li>
-                      <li><a href="#">Mini Mills</a></li>
-                      <li><a href="#">Pallet-Changing VMCs</a></li>
-                    </ul>
-                    <h2>Automation</h2>
-                    <ul>
-                      <li><a href="#">Mill Automation</a></li>
-                      <li><a href="#">Lathe Automation</a></li>
-                    </ul>
-                  </div>
-                  <div class="dropdown-column">
-                    <h2>Lathes</h2>
-                    <ul>
-                      <li><a href="#">ST Series</a></li>
-                      <li><a href="#">Dual-Spindle</a></li>
-                      <li><a href="#">Toolroom Lathes</a></li>
-                    </ul>
-                    <h2>Automation</h2>
-                    <ul>
-                      <li><a href="#">Mill Automation</a></li>
-                      <li><a href="#">Lathe Automation</a></li>
-                    </ul>
-                  </div>
-                  <div class="dropdown-column">
-                    <h2>Automation</h2>
-                    <ul>
-                      <li><a href="#">Mill Automation</a></li>
-                      <li><a href="#">Lathe Automation</a></li>
-                    </ul>
+                <div class="dropdown-container">
+                  <!-- LEFT COLUMN: Categories -->
+                  <ul class="main-categories">
+                    <li data-target="cnc" class="active">CNC</li>
+                    <li data-target="lapping-polishing">Lapping and Polishing</li>
+                    <li data-target="grinding">Grinding</li>
+                    <li data-target="cutting-slitting">Cutting/Slitting</li>
+                    <li data-target="opticprofilers">Optic Profilers</li>
+                    <li data-target="rollforming">Roll Forming</li>
+                    <li data-target="probingmachins">Probing Machines</li>
+                    <li data-target="fuseboard">Fuse Board</li>
+                    <li data-target="translators">Translators</li>
+                    <li data-target="precisionjacks">Precision Jacks</li>
+                    <li data-target="gimbalmounts">Gimbal Mounts</li>
+                  </ul>
+
+                  <!-- RIGHT COLUMN: Subcategories -->
+                  <div class="subcategories">
+
+                    <div id="cnc" class="subcat-panel active">
+                      <ul>
+                        <li><a href="#">SR-NC 500</a></li>
+                        <li><a href="#">Programmatic Cutting Machine</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-1.jpg" alt="CNC">
+                        <p>CNC</p>
+                      </div>
+                    </div>
+
+                    <div id="lapping-polishing" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Double Sided Lapping Machine</a></li>
+                        <li><a href="#">SR-NC 500</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-2.jpg" alt="Lapping and Polishing">
+                        <p>Lapping & Polishing</p>
+                      </div>
+                    </div>
+
+                    <div id="grinding" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">GGM – Glass Grinding</a></li>
+                        <li><a href="#">Edge Grinding</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-3.jpg" alt="Grinding">
+                        <p>Grinding</p>
+                      </div>
+                    </div>
+
+                    <div id="cutting-slitting" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Manual Control Precision Slitter</a></li>
+                        <li><a href="#">NC Controlled Precision Slitter</a></li>
+                        <li><a href="#">Programmable Glass Profile Cutting Machine</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-4.jpg" alt="Cutting/Slitting">
+                        <p>Cutting & Slitting</p>
+                      </div>
+                    </div>
+
+                    <div id="opticprofilers" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Profile Edge Grinding Machine</a></li>
+                        <li><a href="#">Optics Chamfering & Drilling Machine</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-5.jpeg" alt="Optic Profilers">
+                        <p>Optic Profilers</p>
+                      </div>
+                    </div>
+
+                    <div id="rollforming" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Metal Sheet Roll Forming Machine</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-6.jpg" alt="Roll Forming">
+                        <p>Roll Forming</p>
+                      </div>
+                    </div>
+
+                    <div id="probingmachins" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Programmable Probing Station</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-7.jpg" alt="Probing Machines">
+                        <p>Probing Machines</p>
+                      </div>
+                    </div>
+
+                    <div id="fuseboard" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Fuse Board Cutting Machine for Capacitor</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-8.jpg" alt="Fuse Board">
+                        <p>Fuse Board</p>
+                      </div>
+                    </div>
+
+                    <div id="translators" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Manual 2 Axis Translator</a></li>
+                        <li><a href="#">Motorized 2 Axis Translator</a></li>
+                        <li><a href="#">3 Axis Translators</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-9.jpg" alt="Translators">
+                        <p>Translators</p>
+                      </div>
+                    </div>
+
+                    <div id="precisionjacks" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">Manual Jacks</a></li>
+                        <li><a href="#">Automatic Jacks</a></li>
+                        <li><a href="#">24 Point Whiffle Tree</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-10.jpg" alt="Precision Jacks">
+                        <p>Precision Jacks</p>
+                      </div>
+                    </div>
+
+                    <div id="gimbalmounts" class="subcat-panel">
+                      <ul>
+                        <li><a href="#">2 Axis Mount</a></li>
+                        <li><a href="#">3 Axis Mount</a></li>
+                        <li><a href="#">5 Axis Mount</a></li>
+                      </ul>
+                      <div class="subcat-image">
+                        <img src="assets/instrument-11.jpg" alt="Gimbal Mounts">
+                        <p>Gimbal Mounts</p>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
             </li>
 
-            <!-- Other items -->
-            <li class="nav-item has-dropdown">
-              <a href="#">SERVICES</a>
-              <div class="mega-dropdown">
-                <div class="container">
-                  <div class="dropdown-column">
-                    <h2>Vertical Mills</h2>
-                    <ul>
-                      <li><a href="#">VF Series</a></li>
-                      <li><a href="#">Mini Mills</a></li>
-                      <li><a href="#">Pallet-Changing VMCs</a></li>
-                    </ul>
-                    <h2>Automation</h2>
-                    <ul>
-                      <li><a href="#">Mill Automation</a></li>
-                      <li><a href="#">Lathe Automation</a></li>
-                    </ul>
-                  </div>
-                  <div class="dropdown-column">
-                    <h2>Lathes</h2>
-                    <ul>
-                      <li><a href="#">ST Series</a></li>
-                      <li><a href="#">Dual-Spindle</a></li>
-                      <li><a href="#">Toolroom Lathes</a></li>
-                    </ul>
-                    <h2>Automation</h2>
-                    <ul>
-                      <li><a href="#">Mill Automation</a></li>
-                      <li><a href="#">Lathe Automation</a></li>
-                    </ul>
-                  </div>
-                  <div class="dropdown-column">
-                    <h2>Automation</h2>
-                    <ul>
-                      <li><a href="#">Mill Automation</a></li>
-                      <li><a href="#">Lathe Automation</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
+            <!-- Other menu items -->
+            <li class="nav-item"><a href="#">SERVICES</a></li>
             <li><a href="why-haas.html">WHY US</a></li>
             <li><a href="service.html">CONTACT US</a></li>
           </ul>
         </div>
       </div>
     </nav>
-
   </div>
 
+  <!-- Mobile Drawer Menu -->
   <div class="nav-overlay" id="nav-overlay">
     <div class="nav-collapse-2" id="nav-collapse-2">
       <ul class="nav-links">
-        <li><a href="machines.html">MACHINES</a></li>
-        <li><a href="options.html">OPTIONS</a></li>
+
+        <!-- Products Accordion -->
+        <li class="accordion-item">
+          <button class="accordion-toggle">PRODUCTS</button>
+          <ul class="accordion-panel">
+
+            <!-- CNC -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">CNC</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">SR-NC 500</a></li>
+                <li><a href="#">Programmatic Cutting Machine</a></li>
+                <li class="subcat-image"><img src="assets/instrument-1.jpg" alt="CNC">
+                  <p>CNC</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Lapping -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Lapping and Polishing</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Double Sided Lapping Machine</a></li>
+                <li><a href="#">SR-NC 500</a></li>
+                <li class="subcat-image"><img src="assets/instrument-2.jpg" alt="Lapping">
+                  <p>Lapping & Polishing</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Grinding -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Grinding</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">GGM – Glass Grinding</a></li>
+                <li><a href="#">Edge Grinding</a></li>
+                <li class="subcat-image"><img src="assets/instrument-3.jpg" alt="Grinding">
+                  <p>Grinding</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Cutting -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Cutting/Slitting</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Manual Control Precision Slitter</a></li>
+                <li><a href="#">NC Controlled Precision Slitter</a></li>
+                <li><a href="#">Programmable Glass Profile Cutting Machine</a></li>
+                <li class="subcat-image"><img src="assets/instrument-4.jpg" alt="Cutting">
+                  <p>Cutting & Slitting</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Optic Profilers -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Optic Profilers</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Profile Edge Grinding Machine</a></li>
+                <li><a href="#">Optics Chamfering & Drilling Machine</a></li>
+                <li class="subcat-image"><img src="assets/instrument-5.jpeg" alt="Optics">
+                  <p>Optic Profilers</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Roll Forming -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Roll Forming</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Metal Sheet Roll Forming Machine</a></li>
+                <li class="subcat-image"><img src="assets/instrument-6.jpg" alt="Roll Forming">
+                  <p>Roll Forming</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Probing -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Probing Machines</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Programmable Probing Station</a></li>
+                <li class="subcat-image"><img src="assets/instrument-7.jpg" alt="Probing">
+                  <p>Probing Machines</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Fuse Board -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Fuse Board</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Fuse Board Cutting Machine for Capacitor</a></li>
+                <li class="subcat-image"><img src="assets/instrument-8.jpg" alt="Fuse Board">
+                  <p>Fuse Board</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Translators -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Translators</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Manual 2 Axis Translator</a></li>
+                <li><a href="#">Motorized 2 Axis Translator</a></li>
+                <li><a href="#">3 Axis Translators</a></li>
+                <li class="subcat-image"><img src="assets/instrument-9.jpg" alt="Translators">
+                  <p>Translators</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Precision Jacks -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Precision Jacks</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">Manual Jacks</a></li>
+                <li><a href="#">Automatic Jacks</a></li>
+                <li><a href="#">24 Point Whiffle Tree</a></li>
+                <li class="subcat-image"><img src="assets/instrument-10.jpg" alt="Precision Jacks">
+                  <p>Precision Jacks</p>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Gimbal Mounts -->
+            <li class="accordion-subitem">
+              <button class="accordion-subtoggle">Gimbal Mounts</button>
+              <ul class="accordion-subpanel">
+                <li><a href="#">2 Axis Mount</a></li>
+                <li><a href="#">3 Axis Mount</a></li>
+                <li><a href="#">5 Axis Mount</a></li>
+                <li class="subcat-image"><img src="assets/instrument-11.jpg" alt="Gimbal Mounts">
+                  <p>Gimbal Mounts</p>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- Services -->
+        <li><a href="#">SERVICES</a></li>
+
+        <!-- Why Us -->
         <li><a href="why-haas.html">WHY US</a></li>
-        <li><a href="service.html">SERVICE</a></li>
+
+        <!-- Contact Us -->
+        <li><a href="service.html">CONTACT US</a></li>
       </ul>
     </div>
   </div>
 
-
-
+  <!-- === MAIN CONTENT (Carousel + Sections) === -->
   <div class="site-wrapper">
     <main class="main-content">
-      <!-- Grid Section Below Nav -->
+      <!-- Carousel -->
       <section class="hero-carousel">
         <div class="carousel-container">
           <div class="carousel-slide active">
@@ -161,21 +360,19 @@
           <div class="carousel-slide">
             <img src="assets/instrument-3.jpg" alt="Banner 3" />
           </div>
-
-          <!-- Navigation Arrows -->
           <button class="carousel-nav left" onclick="prevSlide()">&#10094;</button>
           <button class="carousel-nav right" onclick="nextSlide()">&#10095;</button>
         </div>
       </section>
 
-      <!-- All You Need In Machining Section -->
+      <!-- Machining Showcase -->
       <section class="machining-showcase">
         <h2 class="machining-heading">
           <span class="highlight">All You Need In Machining</span>
         </h2>
         <div class="machining-cards-container">
           <a href="tooled-up.html" class="machining-card">
-            <img src="assets/instrument-1.jpg" alt="Tooled Up Solutions">
+            <img src="assets/instrument-1.jpg" alt="Tooled Up Solutions" loading="lazy">
             <div class="overlay">
               <div class="overlay-content">
                 <span class="overlay-text">Tooled Up Solutions</span>
@@ -184,35 +381,35 @@
             </div>
           </a>
           <a href="tech-centres.html" class="machining-card">
-            <img src="assets/instrument-2.jpg" alt="Tooled Up Solutions">
+            <img src="assets/instrument-2.jpg" alt="Tech Centres" loading="lazy">
             <div class="overlay">
               <div class="overlay-content">
                 <span class="overlay-text">Tech Centres</span>
                 <div class="arrow-circle">&#8594;</div>
               </div>
             </div>
-            <a href="micromatic360.html" class="machining-card">
-              <img src="assets/instrument-3.jpg" alt="Tooled Up Solutions">
-              <div class="overlay">
-                <div class="overlay-content">
-                  <span class="overlay-text">Micromatic 360</span>
-                  <div class="arrow-circle">&#8594;</div>
-                </div>
+          </a>
+          <a href="micromatic360.html" class="machining-card">
+            <img src="assets/instrument-3.jpg" alt="Micromatic 360" loading="lazy">
+            <div class="overlay">
+              <div class="overlay-content">
+                <span class="overlay-text">Micromatic 360</span>
+                <div class="arrow-circle">&#8594;</div>
               </div>
-            </a>
-            <a href="eco-system.html" class="machining-card">
-              <img src="assets/instrument-5.jpeg" alt="Eco System">
-              <div class="overlay">
-                <div class="overlay-content">
-                  <span class="overlay-text">Eco System</span>
-                  <div class="arrow-circle">&#8594;</div>
-                </div>
+            </div>
+          </a>
+          <a href="eco-system.html" class="machining-card">
+            <img src="assets/instrument-5.jpeg" alt="Eco System" loading="lazy">
+            <div class="overlay">
+              <div class="overlay-content">
+                <span class="overlay-text">Eco System</span>
+                <div class="arrow-circle">&#8594;</div>
               </div>
-            </a>
+            </div>
+          </a>
         </div>
       </section>
     </main>
-
 
     <!-- FOOTER -->
     <footer class="site-footer">
@@ -258,45 +455,81 @@
         <p>&copy; 2025 SR Enterprises. All rights reserved.</p>
       </div>
     </footer>
-
   </div>
 
+  <!-- SCRIPTS -->
   <script>
+    // Hamburger toggle
+    function toggleMenu() {
+      const menu = document.getElementById("nav-collapse-2");
+      const burger = document.getElementById("hamburger");
+      const overlay = document.getElementById("nav-overlay");
+
+      menu.classList.toggle("show");
+      burger.classList.toggle("open");
+      overlay.classList.toggle("show");
+      document.body.classList.toggle("menu-open");
+    }
+
+    // Carousel
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const totalSlides = slides.length;
 
     function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-      });
+      slides.forEach(slide => slide.classList.remove('active'));
       slides[index].classList.add('active');
       currentSlide = index;
     }
-
-    function nextSlide() {
-      let next = (currentSlide + 1) % totalSlides;
-      showSlide(next);
-    }
-
-    function prevSlide() {
-      let prev = (currentSlide - 1 + totalSlides) % totalSlides;
-      showSlide(prev);
-    }
-
-    // Auto-rotate with smooth fade
+    function nextSlide() { showSlide((currentSlide + 1) % totalSlides); }
+    function prevSlide() { showSlide((currentSlide - 1 + totalSlides) % totalSlides); }
     setInterval(nextSlide, 5000);
-
-    // Optional: Initialize first slide immediately
     showSlide(currentSlide);
+
+    // Mega menu interactivity (desktop)
+    document.querySelectorAll('.main-categories li').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.main-categories li').forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('.subcat-panel').forEach(panel => panel.classList.remove('active'));
+        item.classList.add('active');
+        document.getElementById(item.getAttribute('data-target')).classList.add('active');
+      });
+    });
+
+    const productsItem = document.querySelector('.nav-item.has-dropdown > a');
+    const megaMenu = document.querySelector('.mega-dropdown');
+
+    productsItem.addEventListener('click', (e) => {
+      e.preventDefault();
+      megaMenu.classList.toggle('show');
+      productsItem.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!megaMenu.contains(e.target) && !productsItem.contains(e.target)) {
+        megaMenu.classList.remove('show');
+        productsItem.classList.remove('active');
+      }
+    });
+
+    // Mobile overlay accordion toggle
+    document.querySelectorAll('.accordion-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const panel = btn.nextElementSibling;
+        panel.classList.toggle('show');
+      });
+    });
+
+    document.querySelectorAll('.accordion-subtoggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const subpanel = btn.nextElementSibling;
+        subpanel.classList.toggle('show');
+      });
+    });
   </script>
 
 </body>
 
 </html>
-
-
-<!-- 
-[ ] in products.html, post clicking on "PRODUCTS", when the user moves the mouse away, the mega dropdown should close.
-[ ] on mobile, the left vertical menu in products.html should collapse.
--->

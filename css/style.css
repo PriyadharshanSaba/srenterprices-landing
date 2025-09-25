@@ -1,13 +1,16 @@
 :root {
   --padding-right-for-menu-items: 10em;
   --padding-right-for-menu-items-mobile: 1em;
+  --primary: #c00000;
+  --primary-dark: #a80000;
+  --accent: #a63632;
 }
 
 /* === GLOBAL RESET === */
 html,
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Barlow', sans-serif !important;
   height: 100%;
   padding: 0;
   scroll-behavior: smooth;
@@ -16,56 +19,7 @@ body {
 .content-container {
   box-sizing: border-box;
   flex: 1;
-  /* Fills the space between header and footer */
-  padding-top: 80px;
-}
-
-/* === HERO / LAYOUT === */
-.hero {
-  background: #e2e2e2;
-  text-align: center;
-  padding: 5em 1em;
-}
-
-.btn {
-  background: red;
-  color: white;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 1em;
-}
-
-.split {
-  display: flex;
-  justify-content: space-between;
-  padding: 2em;
-}
-
-.split img {
-  max-width: 100%;
-}
-
-/* === TOP BAR === */
-.top-bar {
-  background-color: #222;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5em 2em;
-  align-items: center;
-  font-size: 14px;
-}
-
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.top-links span {
-  margin-left: 1.5em;
-  cursor: pointer;
+  padding-top: 0;
 }
 
 /* === LOGO === */
@@ -85,9 +39,7 @@ body {
   padding: 1em var(--padding-right-for-menu-items);
   border-bottom: 1px solid #ccc;
   box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   z-index: 1001;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -96,7 +48,6 @@ body {
 .nav-header {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .hamburger {
@@ -105,11 +56,9 @@ body {
   display: none;
   position: relative;
   margin-left: auto;
-  z-index: 1100;
-  /* Ensure it stays above the overlay */
+  z-index: 2100;
 }
 
-/* Hamburger icon (☰) and toggle (×) */
 .hamburger::before {
   content: "\2630";
   font-size: 28px;
@@ -121,47 +70,10 @@ body {
   font-size: 32px;
 }
 
-/* Slide-in nav-collapse */
 .nav-collapse {
-  transform: translateY(-20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
   display: none;
 }
 
-.nav-collapse.show {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-  display: flex;
-}
-
-/* Style for nav-collapse-2 */
-.nav-collapse-2 {
-  transform: translateY(-20px);
-  opacity: 0;
-  pointer-events: none;
-  /* transition: transform 0.3s ease, opacity 0.3s ease; */
-  display: none;
-  background-color: #eee;
-  /* Set background color */
-  padding: 1em var(--padding-right-for-menu-items);
-  border-top: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Visible state for nav-collapse-2 */
-.nav-collapse-2.show {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-  display: flex;
-  justify-content: flex-end;
-  /* Align menu items to the right */
-}
-
-/* Nav links */
 .nav-links {
   list-style: none;
   display: flex;
@@ -174,235 +86,345 @@ body {
 .nav-links li a {
   text-decoration: none;
   color: #222;
-  font-weight: bold;
   font-weight: 500;
   letter-spacing: 0.5px;
+  transition: color .2s ease;
 }
 
-.nav-collapse-2 {
-  display: none;
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: var(--primary);
 }
 
-.nav-collapse-2.show {
-  display: block;
-  padding-right: var(--padding-right-for-menu-items);
+.nav-links li a.active {
+  color: var(--primary);
 }
 
-/* Search */
-.search-box {
-  display: flex;
-  align-items: center;
-  margin-top: 1em;
-}
-
-.search-box input {
-  padding: 0.5em;
-  border: none;
-  border-radius: 6px 0 0 6px;
-  outline: none;
-  box-shadow: inset 0 0 4px #ccc;
-  width: 200px;
-}
-
-.search-box button {
-  background-color: #c00000;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-  border-radius: 0 6px 6px 0;
-  cursor: pointer;
-}
-
-
-/* Overlay for the menu */
+/* === MOBILE NAV DRAWER === */
 .nav-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  /* now takes full screen */
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  /* Semi-transparent black background */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 1000;
-  /* Ensure it overlays everything */
+  background-color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 2000;
+  overflow-y: auto;
 }
 
-/* Visible state for the overlay */
 .nav-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
+  transform: translateX(0);
 }
 
-/* Menu inside the overlay */
-.nav-collapse-2 {
-  position: absolute;
+/* Dark semi-transparent backdrop */
+body.menu-open::after {
+  content: '';
+  position: fixed;
   top: 0;
-  right: 0;
-  width: 80%;
-  /* Menu takes up 80% of the screen width */
+  left: 0;
+  width: 100%;
   height: 100%;
-  background-color: #eee;
-  /* Light background for the menu */
-  padding: 2em 1em;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  /* Align menu items to the right */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1500;
 }
 
-/* Nav links inside the menu */
-.nav-collapse-2 .nav-links {
-  list-style: none;
+/* Menu container inside drawer */
+.nav-collapse-2 {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  align-items: flex-start;
+  /* align text to left */
+  padding: 2em 1.5em;
+  /* breathing space */
+  gap: 0.5em;
+}
+
+.nav-collapse-2 .nav-links {
+  width: 100%;
+  /* take full width */
+  list-style: none;
   margin: 0;
   padding: 0;
-  text-align: right;
-  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.nav-collapse-2 .nav-links li {
+  border-bottom: 1px solid #eee;
+  padding: 0.8em 0;
+  width: 100%;
 }
 
 .nav-collapse-2 .nav-links li a {
+  font-size: 1em;
+  font-weight: 600;
+  color: #111;
   text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.8em 0;
+  /* same as accordion-toggle */
+  box-sizing: border-box;
+}
+
+.accordion-toggle {
+  all: unset;
+  /* remove default button styles */
+  font-size: 1em;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.8em 0;
+  /* match <li><a> spacing */
+  box-sizing: border-box;
+}
+
+.nav-collapse-2 .nav-links li a:hover,
+.accordion-toggle:hover,
+.accordion-toggle.active {
+  color: var(--primary);
+}
+
+.accordion-toggle::after,
+.accordion-subtoggle::after {
+  content: '›';
+  /* right arrow */
+  transition: transform 0.3s ease;
+}
+
+.accordion-toggle.active::after,
+.accordion-subtoggle.active::after {
+  transform: rotate(90deg);
+  /* arrow rotates */
+}
+
+/* Accordion panels */
+.accordion-panel {
+  margin-top: 0.5em;
+  display: none;
+  flex-direction: column;
+  gap: 0.6em;
+  padding-left: 1em;
+}
+
+.accordion-panel.show {
+  display: flex;
+}
+
+.accordion-subtoggle {
+  font-size: 0.95em;
+  font-weight: 500;
   color: #222;
-  font-weight: bold;
-  font-size: 1.2em;
+  background: none;
+  border: none;
+  padding: 0.5em 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.accordion-subtoggle:hover,
+.accordion-subtoggle.active {
+  color: var(--primary);
+}
+
+.accordion-subpanel {
+  margin: 0.5em 0;
+  padding-left: 1em;
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.accordion-subpanel.show {
+  display: flex;
+}
+
+.accordion-subpanel li a {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #444;
+  display: block;
+  margin: 0.4em 0;
+}
+
+.accordion-subpanel li a:hover {
+  color: var(--primary);
+}
+
+/* Remove dots from accordion items */
+.accordion-subitem,
+.accordion-subpanel li {
+  list-style: none;
+  /* removes default dots */
+}
+
+/* Space between text and arrow */
+.accordion-toggle::after,
+.accordion-subtoggle::after {
+  content: '›';
+  margin-left: 8px;
+  /* adds spacing */
+  transition: transform 0.3s ease;
 }
 
 
-/* === PRODUCTS IMAGE GRID RESPONSIVE FULL WIDTH === */
-.products-image-grid {
-  padding: 2em var(--padding-right-for-menu-items);
-  /* background-color: #f9f9f9; */
-  box-sizing: border-box;
-}
-
-.products-grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.2em;
+/* Product images inside accordion */
+.accordion-subpanel .subcat-image {
   width: 100%;
-  box-sizing: border-box;
+  max-width: 280px;
+  height: 160px;
+  margin: 1em 0;
+  text-align: center;
 }
 
-.products-grid-box {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  /* Keeps image boxes proportional */
-  overflow: hidden;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.products-grid-image {
+.accordion-subpanel .subcat-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
-.site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  /* 100% of viewport height */
-}
-
-.main-content {
-  flex-grow: 1;
-}
-
-
-/* === MEGA MENU DROPDOWN === */
-.nav-item {
-  position: relative;
-}
-
-/* Default state: hidden */
+/* === MEGA MENU (Desktop) === */
 .mega-dropdown {
   display: none;
-  position: fixed;
-  top: 65px;
-  /* adjust based on height of your nav bar */
+  position: absolute;
+  top: 100%;
   left: 0;
-  width: 100vw;
+  width: 100%;
   background: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  padding: 2em 4em;
-  justify-content: center;
-  gap: 4em;
+  padding: 2em 3em;
 }
 
-/* Wrap inner content in a container */
-.mega-dropdown .dropdown-column {
-  min-width: 180px;
-}
-
-/* Dropdown layout */
-.dropdown-column {
-  min-width: 180px;
-}
-
-.dropdown-column h4 {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 0.5em;
-}
-
-.dropdown-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown-column ul li {
-  margin-bottom: 0.4em;
-}
-
-.dropdown-column ul li a {
-  text-decoration: none;
-  color: #222;
-  font-size: 14px;
-}
-
-.dropdown-column ul li a:hover {
-  text-decoration: underline;
-}
-
-.mega-dropdown .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 3em;
-  padding: 0 2em;
-}
-
-
-.has-dropdown .mega-dropdown {
-  display: none;
-}
-
-.has-dropdown:hover .mega-dropdown {
+.mega-dropdown.show {
   display: block;
 }
 
-/* =============================== */
+.dropdown-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.main-categories {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 220px;
+  border-right: 1px solid #ddd;
+  flex-shrink: 0;
+}
 
-/* HOME PAGE BANNER  */
+.main-categories li {
+  padding: 0.8em 1em;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease, border-left-color 0.3s ease;
+  border-left: 3px solid transparent;
+}
 
+.main-categories li:hover,
+.main-categories li:focus {
+  background: #f7f7f7;
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.main-categories li.active {
+  background: #f0f0f0;
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.subcategories {
+  flex-grow: 1;
+  padding-left: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.subcat-panel {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+.subcat-panel.active {
+  display: flex;
+}
+
+.subcat-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.subcat-panel ul li {
+  border-bottom: 1px solid #eee;
+}
+
+.subcat-panel ul li a {
+  display: block;
+  padding: 0.8em 1em;
+  font-weight: 500;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-left-color 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.subcat-panel ul li a:hover,
+.subcat-panel ul li a:focus {
+  background: #f7f7f7;
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.subcat-panel ul li a.active {
+  background: #f0f0f0;
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.subcat-image {
+  width: 300px;
+  height: 200px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.subcat-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.5em;
+}
+
+/* === HERO CAROUSEL === */
 .hero-carousel {
   width: 100%;
   height: 500px;
-  /* fixed height */
   overflow: hidden;
   position: relative;
   margin-bottom: 2em;
@@ -414,7 +436,6 @@ body {
   height: 100%;
 }
 
-/* Each slide takes up full space */
 .carousel-slide {
   position: absolute;
   top: 0;
@@ -426,13 +447,11 @@ body {
   z-index: 0;
 }
 
-
 .carousel-slide.active {
   opacity: 1;
   z-index: 1;
 }
 
-/* Make image fully cover the banner area */
 .carousel-slide img {
   width: 100%;
   height: 100%;
@@ -440,7 +459,6 @@ body {
   display: block;
 }
 
-/* Arrows stay vertically centered */
 .carousel-nav {
   position: absolute;
   top: 50%;
@@ -469,28 +487,90 @@ body {
   opacity: 1;
 }
 
-/* =============================== */
-
-/* === MACHINES PAGE STYLES === */
-
-.products-image-grid-machines {
-  padding: 2em var(--padding-right-for-menu-items);
-  /* background-color: #f9f9f9; */
-  box-sizing: border-box;
+/* === MACHINING SHOWCASE === */
+.machining-showcase {
+  margin-top: 4em;
 }
 
-.products-grid-container-machines {
+.machining-heading {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.machining-heading .highlight {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.2em 0.5em;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.machining-cards-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1em;
-  width: 100%;
-  box-sizing: border-box;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
 }
 
-/* =============================== */
+.machining-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 280px;
+}
 
+.machining-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
 
-/* === FOOTER STYLES === */
+.machining-card:hover img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1em;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+}
+
+.arrow-circle {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+  transition: background-color 0.3s ease;
+}
+
+.arrow-circle:hover {
+  background-color: var(--primary-dark);
+}
+
+.overlay-text {
+  display: flex;
+  align-items: center;
+  height: 44px;
+}
+
+/* === FOOTER === */
 .site-footer {
   background-color: #1a1a1a;
   color: #f2f2f2;
@@ -553,219 +633,6 @@ body {
   color: #aaa;
 }
 
-/* ======================= */
-
-
-/* === PRODUCT PAGE LAYOUT === */
-.product-page-layout {
-  display: flex;
-  gap: 2em;
-  padding: 2em var(--padding-right-for-menu-items);
-  box-sizing: border-box;
-}
-
-/* Left Sidebar */
-.product-sidebar {
-  width: 280px;
-  max-height: calc(100vh - 150px);
-  overflow-y: auto;
-  position: sticky;
-  top: 100px;
-  background-color: #f5f5f5;
-  padding: 1em;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-title {
-  margin-bottom: 1em;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.sidebar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-item {
-  margin-bottom: 1em;
-}
-
-.accordion {
-  background-color: #ddd;
-  color: #000;
-  cursor: pointer;
-  padding: 0.6em 1em;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.accordion:hover {
-  background-color: #ccc;
-}
-
-.submenu {
-  list-style: none;
-  padding-left: 1em;
-  display: block;
-  margin-top: 0.5em;
-}
-
-.submenu li a {
-  display: block;
-  padding: 0.4em 0;
-  text-decoration: none;
-  color: #333;
-  font-size: 0.95em;
-}
-
-.submenu li a:hover {
-  text-decoration: underline;
-}
-
-/* Right Side Content */
-.product-display {
-  flex-grow: 1;
-}
-
-.product-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2em 1em;
-  border-bottom: 1px solid #eee;
-  scroll-margin-top: 80px;
-  /* space below sticky nav */
-}
-
-.product-info {
-  max-width: 65%;
-}
-
-.product-info h3 {
-  margin: 0 0 0.5em;
-}
-
-.product-info p {
-  color: #555;
-  font-size: 0.95em;
-}
-
-.product-thumb {
-  width: 160px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-
-/* ######################### */
-
-
-
-/* MACHINING COLUMN SECTION */
-
-.machining-showcase {
-  margin-top: 4em;
-}
-
-.machining-heading {
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2em;
-  position: relative;
-}
-
-.machining-cards-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.machining-card {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  height: 280px;
-}
-
-.machining-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.machining-card:hover img {
-  transform: scale(1.05);
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 1em;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-  color: white;
-  display: flex;
-  align-items: center;           /* ✅ vertically center */
-  justify-content: space-between;
-  font-size: 1.1em;
-}
-
-.arrow-circle {
-  background-color: #c00000;
-  color: white;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4em;
-  transition: background-color 0.3s ease;
-}
-
-.arrow-circle:hover {
-  background-color: #a80000;
-}
-
-.overlay-text {
-  display: flex;
-  align-items: center;
-  height: 44px;
-}
-
-.machining-heading {
-  text-align: center;
-  margin-bottom: 2em;
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.machining-heading .highlight {
-  background-color: #a63632;
-  color: white;
-  padding: 0.2em 0.5em;
-  display: inline-block;
-  font-weight: 700;
-}
-
-/* ========================= */
-
-
-
 /* === RESPONSIVE === */
 @media (max-width: 1068px) {
   :root {
@@ -776,40 +643,11 @@ body {
     display: block;
   }
 
-  .nav-collapse {
-    align-items: flex-start;
-    display: none;
-  }
-
   .nav-links {
     flex-direction: column;
     align-items: flex-end;
-    width: 100%;
     gap: 1em;
-    padding-left: 0;
   }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .search-box input {
-    width: 100%;
-  }
-
-  /* 
-  .products-grid-container {
-    grid-template-columns: 1fr;
-  } */
-
-  .products-image-grid {
-    padding: var(--padding-right-for-menu-items-mobile);
-  }
-
-  .products-image-grid-machines {
-    padding: var(--padding-right-for-menu-items-mobile);
-  }
-
 
   .footer-container {
     padding: var(--padding-right-for-menu-items-mobile);
@@ -818,39 +656,14 @@ body {
     text-align: left;
   }
 
-  .footer-logo {
-    display: flex;
-    justify-content: center;
-    /* center the logo horizontally */
-  }
-
   .footer-columns {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.001em;
-  }
-
-  .footer-column {
-    margin-bottom: 0.1em;
+    gap: 1em;
   }
 
   .mega-dropdown {
     display: none !important;
-  }
-
-  .product-page-layout {
-    flex-direction: column;
-  }
-
-  .product-sidebar {
-    width: 100%;
-    position: relative;
-    top: auto;
-    max-height: none;
-  }
-
-  .submenu {
-    display: none;
   }
 
   .machining-cards-container {
@@ -860,11 +673,6 @@ body {
   .machining-card {
     height: 200px;
   }
-
-  .overlay {
-    font-size: 1em;
-  }
-
 }
 
 @media (min-width: 1069px) {
@@ -872,38 +680,14 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
   }
 
-  .nav-collapse.show {
-    display: none;
-    /* Ensure 'show' works on desktop */
-  }
-
-  .nav-collapse-2 {
-    display: none;
-  }
-
+  .nav-collapse-2,
   .nav-collapse-2.show {
     display: none;
   }
 
-  .nav-links {
-    flex-direction: row;
-  }
-
-  .search-box {
-    margin-top: 0;
-  }
-
   .nav-overlay {
     display: none;
-    /* Hide overlay on larger screens */
-  }
-
-  .nav-item:hover .mega-dropdown {
-    display: block;
   }
 }
