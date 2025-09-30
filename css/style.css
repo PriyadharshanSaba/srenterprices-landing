@@ -106,7 +106,6 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  /* now takes full screen */
   height: 100%;
   background-color: #fff;
   transform: translateX(-100%);
@@ -119,7 +118,6 @@ body {
   transform: translateX(0);
 }
 
-/* Dark semi-transparent backdrop */
 body.menu-open::after {
   content: '';
   position: fixed;
@@ -131,20 +129,16 @@ body.menu-open::after {
   z-index: 1500;
 }
 
-/* Menu container inside drawer */
 .nav-collapse-2 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* align text to left */
   padding: 2em 1.5em;
-  /* breathing space */
   gap: 0.5em;
 }
 
 .nav-collapse-2 .nav-links {
   width: 100%;
-  /* take full width */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -169,13 +163,11 @@ body.menu-open::after {
   align-items: center;
   width: 100%;
   padding: 0.8em 0;
-  /* same as accordion-toggle */
   box-sizing: border-box;
 }
 
 .accordion-toggle {
   all: unset;
-  /* remove default button styles */
   font-size: 1em;
   font-weight: 600;
   color: #111;
@@ -184,7 +176,6 @@ body.menu-open::after {
   align-items: center;
   width: 100%;
   padding: 0.8em 0;
-  /* match <li><a> spacing */
   box-sizing: border-box;
 }
 
@@ -197,10 +188,8 @@ body.menu-open::after {
 .accordion-toggle.active::after,
 .accordion-subtoggle.active::after {
   transform: rotate(90deg);
-  /* arrow rotates */
 }
 
-/* Accordion panels */
 .accordion-panel {
   margin-top: 0.5em;
   display: none;
@@ -257,14 +246,11 @@ body.menu-open::after {
   color: var(--primary);
 }
 
-/* Remove dots from accordion items */
 .accordion-subitem,
 .accordion-subpanel li {
   list-style: none;
-  /* removes default dots */
 }
 
-/* Space between text and arrow */
 .accordion-toggle::after,
 .accordion-subtoggle::after {
   content: '›';
@@ -272,8 +258,6 @@ body.menu-open::after {
   transition: transform 0.3s ease;
 }
 
-
-/* Product images inside accordion */
 .accordion-subpanel .subcat-image {
   width: 100%;
   max-width: 280px;
@@ -297,7 +281,7 @@ body.menu-open::after {
   font-weight: bold;
   color: #111;
   cursor: pointer;
-  z-index: 2101; /* above overlay content */
+  z-index: 2101;
 }
 
 .nav-close:hover {
@@ -439,7 +423,9 @@ body.menu-open::after {
 .carousel-container {
   position: relative;
   width: 100%;
+  aspect-ratio: 2 / 1;
   height: 100%;
+  overflow: hidden;
 }
 
 .carousel-slide {
@@ -695,5 +681,41 @@ body.menu-open::after {
 
   .nav-overlay {
     display: none;
+  }
+}
+
+/* === MOBILE HERO/BANNER === */
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: auto; /* let height be defined by the image */
+  }
+
+  .carousel-slide {
+    position: relative; /* reset absolute so each slide stacks correctly */
+    opacity: 1; /* keep them visible */
+    display: none; /* hide inactive slides */
+  }
+
+  .carousel-slide.active {
+    display: block; /* only show active slide */
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto; /* maintain aspect ratio */
+    object-fit: cover;
+  }
+
+  .carousel-nav {
+    font-size: 1.2em;   /* shrink the arrow size */
+    padding: 0.3em 0.5em; /* less padding around it */
+  }
+
+  .carousel-nav.left {
+    left: 10px; /* tuck in closer to screen edge */
+  }
+
+  .carousel-nav.right {
+    right: 10px;
   }
 }
