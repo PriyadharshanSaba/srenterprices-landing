@@ -3,7 +3,7 @@
   --padding-right-for-menu-items-mobile: 1em;
   --primary: #c00000;
   --primary-dark: #a80000;
-  --accent: #a63632;
+  --accent: #3953A3;
 }
 
 /* === GLOBAL RESET === */
@@ -259,18 +259,21 @@ body.menu-open::after {
 }
 
 .accordion-subpanel .subcat-image {
-  width: 100%;
-  max-width: 280px;
+  width: 240px;
   height: 160px;
-  margin: 1em 0;
-  text-align: center;
+  margin: 1em auto;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .accordion-subpanel .subcat-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 6px;
+  object-position: center;
 }
 
 .nav-close {
@@ -397,18 +400,24 @@ body.menu-open::after {
 }
 
 .subcat-image {
-  width: 300px;
-  height: 200px;
-  flex-shrink: 0;
-  text-align: center;
+  width: 260px;
+  /* uniform size */
+  height: 180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .subcat-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 0.5em;
+  /* fills container */
+  object-position: center;
+  /* ensures center crop */
 }
 
 /* === HERO CAROUSEL === */
@@ -687,35 +696,75 @@ body.menu-open::after {
 /* === MOBILE HERO/BANNER === */
 @media (max-width: 768px) {
   .hero-carousel {
-    height: auto; /* let height be defined by the image */
+    height: auto;
+    margin-bottom: 0;
   }
 
   .carousel-slide {
-    position: relative; /* reset absolute so each slide stacks correctly */
-    opacity: 1; /* keep them visible */
-    display: none; /* hide inactive slides */
+    position: absolute;
+    /* keep them stacked */
+    opacity: 0;
+    /* hidden by default */
+    transition: opacity 1s ease-in-out;
+    /* smooth fade */
+    width: 100%;
+    height: auto;
   }
 
   .carousel-slide.active {
-    display: block; /* only show active slide */
+    opacity: 1;
+    /* fade in */
+    z-index: 1;
+    position: relative;
+    /* ensures active one takes space */
   }
 
   .carousel-slide img {
     width: 100%;
-    height: auto; /* maintain aspect ratio */
+    height: auto;
+    /* maintain aspect ratio */
     object-fit: cover;
   }
 
   .carousel-nav {
-    font-size: 1.2em;   /* shrink the arrow size */
-    padding: 0.3em 0.5em; /* less padding around it */
+    font-size: 1.2em;
+    /* shrink the arrow size */
+    padding: 0.3em 0.5em;
+    /* less padding around it */
   }
 
   .carousel-nav.left {
-    left: 10px; /* tuck in closer to screen edge */
+    left: 10px;
+    /* tuck in closer to screen edge */
   }
 
   .carousel-nav.right {
     right: 10px;
   }
+
+  .carousel-nav {
+    font-size: 1.2em;
+    /* shrink the arrow size */
+    padding: 0.3em 0.5em;
+  }
+
+  .carousel-nav.left {
+    left: 10px;
+  }
+
+  .carousel-nav.right {
+    right: 10px;
+  }
+
+  .machining-heading {
+    font-size: 1.5em;
+    /* smaller heading for mobile */
+    margin-bottom: 1em;
+    /* slightly tighter spacing */
+  }
+
+  .machining-showcase {
+    margin-top: 2em;
+  }
 }
+
